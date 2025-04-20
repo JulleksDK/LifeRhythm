@@ -1,0 +1,67 @@
+// App-konfiguration (nemt at ændre app-navn senere)
+const APP_CONFIG = {
+    appName: 'LifeRhythm',
+    version: '1.0.0'
+};
+
+// Opdater titel med app-navn
+document.title = `${APP_CONFIG.appName} - Find balance i hverdagen`;
+
+// Opdater app-navn i DOM
+document.addEventListener('DOMContentLoaded', function() {
+    // Opdater app-navn hvor relevant
+    const appNameElements = document.querySelectorAll('.app-name');
+    appNameElements.forEach(element => {
+        element.textContent = APP_CONFIG.appName;
+    });
+    
+    // Opdater årstal i footer
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+    
+    // Login-knap funktionalitet
+    const loginButton = document.getElementById('login-btn');
+    if (loginButton) {
+        loginButton.addEventListener('click', handleLogin);
+    }
+    
+    // Opret profil-knap funktionalitet
+    const createButton = document.getElementById('create-btn');
+    if (createButton) {
+        createButton.addEventListener('click', handleCreateAccount);
+    }
+});
+
+// Login-funktion
+function handleLogin() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    // Simpel validering
+    if (!email || !password) {
+        alert('Udfyld venligst både email og adgangskode');
+        return;
+    }
+    
+    // Her ville man normalt sende login-anmodning til server
+    console.log('Forsøger at logge ind med:', email);
+    
+    // Eksempel - simulerer login-proces
+    // I en rigtig app ville dette være et API-kald til server
+    setTimeout(() => {
+        // Redirect til dashboard efter login (simuleret)
+        console.log('Login succesfuldt - redirecter til dashboard');
+        // window.location.href = 'dashboard.html';
+        alert('Login funktionalitet vil her redirecte til dashboard');
+    }, 1000);
+}
+
+// Opret konto-funktion
+function handleCreateAccount() {
+    // Redirect til side for oprettelse af konto
+    console.log('Redirecter til opret profil-side');
+    // window.location.href = 'signup.html';
+    alert('Her ville brugeren blive sendt til en side for at oprette en profil');
+}
