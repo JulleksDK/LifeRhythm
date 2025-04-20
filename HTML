@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeRhythm - Find balance i hverdagen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="logo-container">
+        <div class="wave-animation">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <h1 class="app-name">LifeRhythm</h1>
+    </div>
+    
+    <div class="login-container">
+        <h2 class="form-heading">Log ind</h2>
+        <div class="input-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="Din e-mail">
+        </div>
+        <div class="input-group">
+            <label for="password">Adgangskode</label>
+            <input type="password" id="password" placeholder="Din adgangskode">
+        </div>
+        <button id="login-btn" class="login-btn">Log ind</button>
+        
+        <div class="create-account">
+            <p>Ny bruger?</p>
+            <button id="create-btn" class="create-btn">Opret profil</button>
+        </div>
+    </div>
+    
+    <div class="features-container">
+        <div class="feature-box">
+            <div class="feature-icon">📱</div>
+            <h3 class="feature-title">Tilgængelig overalt</h3>
+            <p class="feature-desc">Tag LifeRhythm med dig, på mobil, tablet og computer</p>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon">🧠</div>
+            <h3 class="feature-title">AI-drevet planlægning</h3>
+            <p class="feature-desc">Intelligent hjælp til at strukturere din hverdag optimalt</p>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon">⚖️</div>
+            <h3 class="feature-title">Find balancen</h3>
+            <p class="feature-desc">Få tid til arbejde, familie, fritid og afslapning</p>
+        </div>
+    </div>
+    
+    <footer>
+        &copy; <span id="current-year"></span> LifeRhythm | Alle rettigheder forbeholdes
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
