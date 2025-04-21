@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeRhythm - Dashboard</title>
+    <link rel="stylesheet" href="LifeRhythm.css">
+</head>
+<body>
+    <div class="logo-container">
+        <div class="wave-animation">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <h1 class="app-name">LifeRhythm</h1>
+    </div>
+    
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h2 class="user-welcome">Velkommen, <span id="user-name">Bruger</span></h2>
+            <button id="logout-btn" class="logout-btn" onclick="logout()">Log ud</button>
+        </div>
+        
+        <div class="tabs-container">
+            <button class="tab active" data-tab="weekly-plan">Ugeplan</button>
+            <button class="tab" data-tab="evaluation">Evaluering</button>
+            <button class="tab" data-tab="statistics">Statistik</button>
+            <button class="tab" data-tab="settings">Indstillinger</button>
+        </div>
+        
+        <!-- Ugeplan tab -->
+        <div id="weekly-plan" class="tab-content active">
+            <div class="week-header">
+                <h3>Din ugeplan</h3>
+                <div class="week-navigation">
+                    <button id="prev-week" class="week-nav-btn">◀</button>
+                    <span class="current-week">Uge <span id="week-number">--</span></span>
+                    <button id="next-week" class="week-nav-btn">▶</button>
+                </div>
+            </div>
+            
+            <div id="schedule-container" class="schedule-container">
+                <!-- Her indsættes ugeplanen dynamisk via JavaScript -->
+                <div class="loading-message">Indlæser ugeplan...</div>
+            </div>
+        </div>
+        
+        <!-- Evaluering tab -->
+        <div id="evaluation" class="tab-content">
+            <h3>Evaluering</h3>
+            <div class="evaluation-container">
+                <div class="evaluation-card">
+                    <h4 class="evaluation-title">Daglig evaluering</h4>
+                    <p>Hvordan gik din dag i forhold til din plan?</p>
+                    
+                    <div class="evaluation-question">
+                        <label>Hvor tilfreds er du med dagens struktur?</label>
+                        <div class="rating-stars">
+                            <button class="star-btn" data-rating="1">★</button>
+                            <button class="star-btn" data-rating="2">★</button>
+                            <button class="star-btn" data-rating="3">★</button>
+                            <button class="star-btn" data-rating="4">★</button>
+                            <button class="star-btn" data-rating="5">★</button>
+                        </div>
+                    </div>
+                    
+                    <div class="evaluation-question">
+                        <label>Hvad fungerede godt i dag?</label>
+                        <textarea class="evaluation-textarea" placeholder="Fortæl hvad der fungerede godt..."></textarea>
+                    </div>
+                    
+                    <div class="evaluation-question">
+                        <label>Hvad kunne have fungeret bedre?</label>
+                        <textarea class="evaluation-textarea" placeholder="Fortæl hvad der kunne være bedre..."></textarea>
+                    </div>
+                    
+                    <button class="evaluation-submit">Gem evaluering</button>
+                </div>
+                
+                <div class="evaluation-card">
+                    <h4 class="evaluation-title">Ugentlig evaluering</h4>
+                    <p>Se tilbage på din uge og vurdér din ugeplans effektivitet.</p>
+                    <p>Den ugentlige evaluering bliver tilgængelig i slutningen af ugen.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Statistik tab -->
+        <div id="statistics" class="tab-content">
+            <h3>Statistik og indsigter</h3>
+            <p>Her vil du kunne se statistik over din tidsfordeling og få AI-genererede indsigter.</p>
+            <div class="placeholder-message">
+                Statistik bliver tilgængelig når du har brugt appen i længere tid.
+            </div>
+        </div>
+        
+        <!-- Indstillinger tab -->
+        <div id="settings" class="tab-content">
+            <h3>Indstillinger</h3>
+            <div class="settings-container">
+                <div class="settings-card">
+                    <h4>Personlige oplysninger</h4>
+                    <form id="personal-info-form">
+                        <div class="input-group">
+                            <label for="settings-first-name">Fornavn</label>
+                            <input type="text" id="settings-first-name">
+                        </div>
+                        <div class="input-group">
+                            <label for="settings-last-name">Efternavn</label>
+                            <input type="text" id="settings-last-name">
+                        </div>
+                        <div class="input-group">
+                            <label for="settings-email">E-mail</label>
+                            <input type="email" id="settings-email">
+                        </div>
+                        <button type="submit" class="settings-save-btn">Gem ændringer</button>
+                    </form>
+                </div>
+                
+                <div class="settings-card">
+                    <h4>Tidsindstillinger</h4>
+                    <form id="time-preferences-form">
+                        <div class="input-group">
+                            <label for="settings-wake-time">Vågner kl.</label>
+                            <input type="time" id="settings-wake-time">
+                        </div>
+                        <div class="input-group">
+                            <label for="settings-bedtime">Går i seng kl.</label>
+                            <input type="time" id="settings-bedtime">
+                        </div>
+                        <div class="input-group">
+                            <label for="settings-work-hours">Arbejdstimer pr. dag</label>
+                            <input type="number" id="settings-work-hours" min="0" max="24">
+                        </div>
+                        <div class="checkbox-group">
+                            <p>Arbejdsdage:</p>
+                            <div class="workday-checkboxes">
+                                <label><input type="checkbox" name="workday" value="1"> Mandag</label>
+                                <label><input type="checkbox" name="workday" value="2"> Tirsdag</label>
+                                <label><input type="checkbox" name="workday" value="3"> Onsdag</label>
+                                <label><input type="checkbox" name="workday" value="4"> Torsdag</label>
+                                <label><input type="checkbox" name="workday" value="5"> Fredag</label>
+                                <label><input type="checkbox" name="workday" value="6"> Lørdag</label>
+                                <label><input type="checkbox" name="workday" value="7"> Søndag</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="settings-save-btn">Gem ændringer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal til at tilføje aktivitet -->
+    <div class="modal-overlay" id="add-activity-modal">
+        <div class="modal-container">
+            <button class="modal-close" id="close-modal">&times;</button>
+            <h3 class="modal-title">Tilføj ny aktivitet</h3>
+            
+            <form class="modal-form" id="add-activity-form">
+                <input type="hidden" id="activity-day" value="1">
+                
+                <div class="input-group">
+                    <label for="activity-title">Titel</label>
+                    <input type="text" id="activity-title" placeholder="Aktivitetens titel" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="activity-type">Type</label>
+                    <select id="activity-type" class="activity-type-select" required>
+                        <!-- Indlæses dynamisk fra databasen -->
+                    </select>
+                </div>
+                
+                <div class="time-inputs">
+                    <div class="input-group">
+                        <label for="activity-start">Start tidspunkt</label>
+                        <input type="time" id="activity-start" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="activity-end">Slut tidspunkt</label>
+                        <input type="time" id="activity-end" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="activity-description">Beskrivelse (valgfri)</label>
+                    <textarea id="activity-description" placeholder="Beskriv aktiviteten..."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Prioritet</label>
+                    <div class="priority-options">
+                        <label class="priority-option">
+                            <input type="radio" name="priority" value="1"> Høj
+                        </label>
+                        <label class="priority-option">
+                            <input type="radio" name="priority" value="3" checked> Normal
+                        </label>
+                        <label class="priority-option">
+                            <input type="radio" name="priority" value="5"> Lav
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-activity">Tilføj aktivitet</button>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        &copy; <span id="current-year"></span> LifeRhythm | Alle rettigheder forbeholdes
+    </footer>
+
+    <script src="LifeRhythm.js"></script>
+</body>
+</html>

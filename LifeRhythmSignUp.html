@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeRhythm - Opret profil</title>
+    <link rel="stylesheet" href="LifeRhythm.css">
+</head>
+<body>
+    <div class="logo-container">
+        <div class="wave-animation">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <h1 class="app-name">LifeRhythm</h1>
+    </div>
+    
+    <div class="login-container signup-container">
+        <h2 class="form-heading">Opret en profil</h2>
+        <form id="signup-form">
+            <div class="input-group">
+                <label for="first-name">Fornavn</label>
+                <input type="text" id="first-name" placeholder="Dit fornavn" required>
+            </div>
+            <div class="input-group">
+                <label for="last-name">Efternavn</label>
+                <input type="text" id="last-name" placeholder="Dit efternavn" required>
+            </div>
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="Din e-mail" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Adgangskode</label>
+                <input type="password" id="password" placeholder="Vælg en adgangskode" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Bekræft adgangskode</label>
+                <input type="password" id="confirm-password" placeholder="Gentag adgangskode" required>
+            </div>
+            <button type="submit" class="login-btn">Opret profil</button>
+            
+            <div class="create-account">
+                <p>Har du allerede en konto?</p>
+                <a href="LifeRhythm.html" class="login-link">Log ind her</a>
+            </div>
+        </form>
+    </div>
+    
+    <footer>
+        &copy; <span id="current-year"></span> LifeRhythm | Alle rettigheder forbeholdes
+    </footer>
+
+    <script src="LifeRhythm.js"></script>
+</body>
+</html>
